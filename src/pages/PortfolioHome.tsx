@@ -354,7 +354,7 @@ export default function PortfolioHome() {
       {notice && (
         <div
           role="status"
-          className="fade-swap fixed bottom-6 left-1/2 z-50 flex max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border border-line bg-elevated p-4 shadow-sm"
+          className="glass fade-swap fixed bottom-6 left-1/2 z-50 flex max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border p-4"
         >
           <span className="status-dot status-green shrink-0" aria-hidden="true" />
           <p className="font-inter text-sm font-medium">{notice}</p>

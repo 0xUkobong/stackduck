@@ -332,7 +332,7 @@ export default function Account() {
           </button>
         </Section>
 
-        <section className="rounded-xl border border-line bg-surface p-5 sm:p-6" aria-label="Danger zone">
+        <section className="glass rounded-xl border border-line p-5 sm:p-6" aria-label="Danger zone">
           <h2 className="font-inter text-lg font-semibold text-ink">Danger zone</h2>
           <p className="mt-1 font-inter text-sm font-normal text-ink-muted">
             Deleting your account removes your sign-in immediately, along with your

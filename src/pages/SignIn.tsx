@@ -24,7 +24,7 @@ function AuthVisual() {
         <p className="text-xs font-medium text-ink-muted">Your portfolio, at a glance</p>
         <h2 className="mt-3 max-w-sm font-inter text-3xl font-semibold leading-tight tracking-tight">A little clarity for<br />your whole stack.</h2>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-secondary">Keep project health, usage, and revenue in view. Pick up where you left off.</p>
-        <div className="mt-8 overflow-hidden rounded-xl border border-line bg-canvas">
+        <div className="glass mt-8 overflow-hidden rounded-xl border border-line">
           <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
             <p className="text-sm font-semibold">Portfolio overview</p>
             <span className="text-xs text-ink-muted">Example data</span>

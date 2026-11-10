@@ -725,7 +725,7 @@ export default function ProjectDetail() {
         {attach === 'firebase' && (
           <div className="mt-3 rounded-lg bg-inset p-4">
             <p className="text-sm font-medium">Paste the Firebase service-account JSON (read-only roles recommended). <Link to="/docs/connect/firebase" className="text-link-emphasis text-link font-normal">Where do I find this? <ArrowRight size={14} className="ml-1 inline" aria-hidden="true" /></Link></p>
-            <details className="mt-2 rounded-lg bg-surface p-3 text-sm">
+            <details className="glass mt-2 rounded-lg border border-line p-3 text-sm">
               <summary className="cursor-pointer font-medium text-ink">What is this?</summary>
               <p className="mt-2 text-ink-muted">
                 A service account is like a read-only username your Firebase project issues
@@ -1054,7 +1054,7 @@ export default function ProjectDetail() {
       {toast && (
         <div
           role="status"
-          className="fade-swap fixed bottom-6 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border border-line bg-elevated p-4 shadow-sm"
+          className="glass fade-swap fixed bottom-6 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border p-4"
         >
           <span className="status-dot status-green shrink-0" aria-hidden="true" />
           <p className="font-inter text-sm font-medium">{toast}</p>

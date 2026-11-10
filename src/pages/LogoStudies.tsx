@@ -55,7 +55,7 @@ export default function LogoStudies() {
         <p className="mt-3 max-w-2xl font-inter text-base leading-relaxed text-ink-secondary">Five directions, from familiar mascot to sharper product symbol. Each is drawn to hold up at app-icon size and in the wordmark.</p>
         <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {concepts.map((concept, index) => (
-            <article key={concept.id} className="overflow-hidden rounded-2xl border border-line bg-surface">
+            <article key={concept.id} className="glass overflow-hidden rounded-2xl border border-line">
               <div className="flex min-h-40 items-center justify-center bg-inkwell-navy">
                 {concept.id === 'current' ? <StackduckMark size={76} /> : <ConceptMark concept={concept.id} size={76} />}
               </div>

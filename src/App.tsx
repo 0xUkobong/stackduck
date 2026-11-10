@@ -44,7 +44,7 @@ function Header({ user }: { user: BackendUser | null }) {
   // Marketing pages bring their own nav — app chrome stays off them.
   if (isMarketing(pathname) || pathname === '/signin' || pathname === '/auth/callback') return null
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur-sm">
+    <header className="glass-nav sticky top-0 z-40 border-b border-line">
       <div className="mx-auto flex max-w-[var(--page-max-width)] items-center justify-between gap-4 px-5 py-3 sm:px-6">
         <Logo />
         {user && (

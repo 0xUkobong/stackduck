@@ -111,7 +111,7 @@ export default function ConnectorPicker(props: {
                 type="button"
                 disabled={connected && !retry}
                 onClick={() => item.type && props.onSelect(item.type)}
-                className="flex min-h-[76px] w-full items-center gap-3 rounded-lg border border-line bg-surface px-3 py-3 text-left transition-colors hover:border-line-strong hover:bg-inset disabled:cursor-default"
+                className="glass flex min-h-[76px] w-full items-center gap-3 rounded-lg border border-line px-3 py-3 text-left transition-colors hover:border-line-strong hover:bg-inset disabled:cursor-default"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-inset text-ink-muted">
                   <Icon size={18} aria-hidden="true" />
@@ -126,7 +126,7 @@ export default function ConnectorPicker(props: {
           )
         })}
       </ul>
-      <details className="mt-3 rounded-lg border border-line bg-surface px-3 py-2.5">
+      <details className="glass mt-3 rounded-lg border border-line px-3 py-2.5">
         <summary className="cursor-pointer list-none font-inter text-sm font-medium text-ink-muted marker:hidden">
           <span className="flex items-center justify-between">Coming soon <span className="text-xs">{comingSoon.reduce((sum, group) => sum + group.items.length, 0)} integrations</span></span>
         </summary>

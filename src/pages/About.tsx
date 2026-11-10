@@ -78,7 +78,7 @@ export default function About() {
               </div>
               <div className="grid gap-px overflow-hidden rounded-cards border border-line bg-line sm:grid-cols-3">
                 {STORY_STEPS.map(({ number, Icon, title, description }) => (
-                  <div key={number} className="bg-surface p-5 sm:p-6">
+                  <div key={number} className="glass rounded-xl border border-line p-5 sm:p-6">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-semibold tabular-nums text-ink-muted">{number}</span>
                       <Icon size={18} className="text-ink-secondary" aria-hidden="true" />
@@ -112,7 +112,7 @@ export default function About() {
                 for anyone else running more than one thing.
               </p>
               <p className="font-medium text-ink">
-                - <button className="text-link" onClick={() => setDevOpen(true)} title="About the developer">@0xUkobong</button>
+                - <span>Saviour Ukobong (</span><button className="text-link" onClick={() => setDevOpen(true)} title="About the developer">@0xUkobong</button><span>)</span>
               </p>
             </div>
           </section>

@@ -21,7 +21,7 @@ export function Step({ n, title, children }: { n: string; title: string; childre
 
 export function Code({ children }: { children: string }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-line">
+    <div className="glass overflow-hidden rounded-lg border border-line">
       <div className="flex items-center justify-between gap-3 border-b border-line bg-surface px-4 py-2">
         <span className="text-xs font-medium text-ink-muted">Code</span>
         <CopyButton value={children} label="Copy code" />

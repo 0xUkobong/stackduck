@@ -133,6 +133,15 @@
   --theme-skeleton: #e8e7e5;
   --theme-skeleton-sheen: rgba(255, 255, 255, 0.65);
 
+  /* Glass material — translucent surface/nav fills. Solid fallbacks below
+     when blur is unsupported, reduced, or the user prefers less transparency. */
+  --glass-fill: color-mix(in srgb, var(--theme-surface) 82%, transparent);
+  --glass-nav: color-mix(in srgb, var(--theme-canvas) 84%, transparent);
+  --glass-border: color-mix(in srgb, var(--theme-line) 78%, #ffffff);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 0.82);
+  --glass-shadow: 0 1px 1px rgb(21 27 49 / 0.03), 0 10px 24px rgb(21 27 49 / 0.055);
+  --glass-blur: 16px;
+
   /* DESIGN.md spacing tokens (plain vars — see @theme note above) */
   --spacing-4: 4px;
   --spacing-8: 8px;
@@ -174,6 +183,11 @@ html[data-theme="dark"] {
   --shadow-subtle: rgba(0, 0, 0, 0.35) 0px 1px 3px 0px, rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
   --shadow-sm: rgba(0, 0, 0, 0.4) 0px 4px 6px -1px, rgba(0, 0, 0, 0.3) 0px 2px 4px -1px;
   --shadow-sm-2: rgba(0, 0, 0, 0.45) 0px 1px 4px 0px;
+  --glass-fill: color-mix(in srgb, var(--theme-elevated) 82%, transparent);
+  --glass-nav: color-mix(in srgb, var(--theme-canvas) 84%, transparent);
+  --glass-border: rgb(255 255 255 / 0.17);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 0.14);
+  --glass-shadow: 0 1px 1px rgb(0 0 0 / 0.22), 0 10px 24px rgb(0 0 0 / 0.22);
 }
 
 html {
@@ -324,7 +338,7 @@ body {
   border-radius: var(--radius-inputs);
   padding: 10px 14px;
   font-size: 16px;
-  background: var(--theme-elevated);
+  background: color-mix(in srgb, var(--theme-elevated) 84%, transparent);
   color: var(--theme-ink);
 }
 .input::placeholder {
@@ -541,3 +555,195 @@ body {
 
 /* Route focus announces content without outlining the whole page. */
 main:focus { outline: none; }
+
+/* Glass is a material on surfaces that already exist. Text, controls, and
+   charts stay on their own opaque styles. Unlayered so it wins over solid
+   surface utilities without changing layout classes. */
+.glass,
+.card:not([class*="bg-"]),
+.utility-panel,
+.modal-pop,
+.action-menu,
+.project-card {
+  background-color: var(--glass-fill);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+.btn-ghost {
+  background-color: var(--glass-fill);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-highlight);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+.btn-primary {
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.12), transparent 72%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 4px 12px rgb(21 27 49 / 0.12);
+}
+.input {
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+.btn-ghost:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--theme-surface) 90%, transparent);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+.glass-nav {
+  background-color: var(--glass-nav);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+.project-card:hover,
+.project-card:focus-within {
+  border-color: var(--theme-line-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .card:not([class*="bg-"]),
+  .utility-panel,
+  .modal-pop,
+  .action-menu,
+  .project-card,
+  .btn-ghost,
+  .input {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glass,
+  .card:not([class*="bg-"]),
+  .utility-panel,
+  .project-card {
+    background-color: var(--theme-surface);
+    box-shadow: var(--glass-highlight);
+  }
+  .modal-pop,
+  .action-menu {
+    background-color: var(--theme-elevated);
+  }
+  .glass-nav {
+    background-color: var(--theme-canvas);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-reduced-motion: reduce) {
+  .glass,
+  .card:not([class*="bg-"]),
+  .utility-panel,
+  .modal-pop,
+  .action-menu,
+  .project-card,
+  .btn-ghost,
+  .input,
+  .glass-nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glass,
+  .card:not([class*="bg-"]),
+  .utility-panel,
+  .project-card {
+    background-color: var(--theme-surface);
+  }
+  .modal-pop,
+  .action-menu {
+    background-color: var(--theme-elevated);
+  }
+  .glass-nav {
+    background-color: var(--theme-canvas);
+    box-shadow: none;
+  }
+  .btn-ghost,
+  .input { background-color: var(--theme-surface); }
+}
+
+/* The landing page keeps its approved slightly brighter glass tuning while
+   other routes use the shared app-wide surface tokens above. */
+.landing-page {
+  --glass-fill: color-mix(in srgb, var(--theme-surface) 80%, transparent);
+  --glass-nav: color-mix(in srgb, var(--theme-canvas) 84%, transparent);
+  --glass-border: color-mix(in srgb, var(--theme-line) 88%, var(--theme-ink));
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 0.88);
+  --glass-shadow: 0 1px 1px rgb(21 27 49 / 0.03), 0 6px 16px rgb(21 27 49 / 0.045);
+  --glass-blur: 18px;
+}
+
+html[data-theme="dark"] .landing-page {
+  --glass-fill: color-mix(in srgb, var(--theme-elevated) 84%, transparent);
+  --glass-nav: color-mix(in srgb, var(--theme-canvas) 84%, transparent);
+  --glass-border: rgb(255 255 255 / 0.16);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 0.13);
+  --glass-shadow: 0 1px 1px rgb(0 0 0 / 0.22), 0 10px 24px rgb(0 0 0 / 0.22);
+}
+
+.landing-page .btn-ghost {
+  background-color: var(--glass-fill);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-highlight);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.landing-page .btn-primary {
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.12), transparent 72%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 4px 12px rgb(21 27 49 / 0.14);
+}
+
+.landing-page .btn-ghost:hover {
+  background-color: var(--theme-surface);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+.landing-page .glass-nav {
+  border-bottom-color: color-mix(in srgb, var(--glass-border) 55%, transparent);
+  box-shadow: var(--glass-highlight), 0 4px 14px rgb(21 27 49 / 0.035);
+}
+
+.landing-page .landing-demo-glass {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.96), 0 16px 36px rgb(21 27 49 / 0.085);
+}
+
+.landing-page #how-it-works {
+  background-color: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.landing-page .landing-feature-glass {
+  background-color: color-mix(in srgb, var(--theme-feature) 92%, transparent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 10px 24px rgb(21 27 49 / 0.12);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .landing-page .btn-ghost,
+  .landing-page #how-it-works { background-color: var(--theme-surface); }
+  .landing-page .landing-feature-glass { background-color: var(--theme-feature); }
+  .landing-page .btn-primary { background-image: none; }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-reduced-motion: reduce) {
+  .landing-page .btn-ghost {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--theme-surface);
+  }
+  .landing-page #how-it-works {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--theme-surface);
+  }
+  .landing-page .landing-feature-glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--theme-feature);
+  }
+  .landing-page .btn-primary { background-image: none; }
+}

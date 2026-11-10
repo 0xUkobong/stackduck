@@ -28,7 +28,7 @@ export default function SiteNav({ active }: { active?: SiteSection }) {
     return () => document.removeEventListener('keydown', escape)
   }, [mobileOpen])
   return (
-    <nav className="relative z-30 bg-transparent">
+    <nav className="glass-nav relative z-30 border-b border-line">
       <div className="mx-auto flex max-w-[var(--page-max-width)] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <Logo />
         <div className="flex items-center gap-2 sm:gap-5">
@@ -74,7 +74,7 @@ export default function SiteNav({ active }: { active?: SiteSection }) {
         </div>
       </div>
       {mobileOpen && (
-        <div id="site-mobile-navigation" className="border-t border-line bg-canvas px-4 py-3 sm:hidden">
+        <div id="site-mobile-navigation" className="glass border-t border-line px-4 py-3 sm:hidden">
           <div className="mx-auto flex max-w-[var(--page-max-width)] flex-col gap-1">
             {LINKS.map((link) => (
               <Link

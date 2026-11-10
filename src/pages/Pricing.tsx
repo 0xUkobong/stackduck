@@ -29,7 +29,7 @@ function Check() {
 
 function PricingPreview() {
   return (
-    <div role="img" aria-label="Stackduck portfolio dashboard preview" className="w-full rounded-cards border border-line bg-surface p-4 sm:p-5">
+    <div role="img" aria-label="Stackduck portfolio dashboard preview" className="glass w-full rounded-cards border border-line p-4 sm:p-5">
       <div className="flex items-center justify-between border-b border-line pb-3">
         <div className="flex items-center gap-2">
           <span className="grid size-8 place-items-center rounded-lg bg-inset text-ink"><Activity size={16} aria-hidden="true" /></span>
@@ -172,7 +172,7 @@ export default function Pricing() {
                 One price per account, not per seat. Same product, higher limits, priority support.
               </p>
               {error && <p role="alert" className="mt-4 font-inter text-sm text-coral-emphasis">{error}</p>}
-              <div className="mt-5 overflow-hidden rounded-cards border border-line bg-surface">
+              <div className="glass mt-5 overflow-hidden rounded-cards border border-line">
                 {(['monthly', 'yearly'] as const).map((period) => {
                   const isOffered = offered(period)
                   const amount = price(period)

@@ -19,7 +19,7 @@ export default function PortfolioDemo() {
   const points = samples.map((value, index) => `${20 + index * 360 / (samples.length - 1)},${130 - ((value - min) / (max - min)) * 110}`).join(' ')
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm">
+    <div className="landing-demo-glass glass overflow-hidden rounded-2xl border">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 sm:px-6">
         <span className="inline-flex items-center gap-2 text-sm font-semibold"><Activity size={16} aria-hidden="true" />Example portfolio</span>
         <span className="badge">Sample data · no account needed</span>
@@ -30,7 +30,7 @@ export default function PortfolioDemo() {
           <div className="flex flex-col gap-2" role="group" aria-label="Demo projects">
             {PROJECTS.map((item, index) => (
               <button key={item.id} type="button" aria-pressed={selected === index} aria-controls="demo-project-detail" onClick={() => setSelected(index)}
-                className={`flex min-h-20 w-full items-center gap-3 rounded-xl border p-3 text-left transition-colors ${selected === index ? 'border-line-strong bg-inset' : 'border-transparent hover:bg-inset'}`}>
+                className={`flex min-h-20 w-full items-center gap-3 rounded-xl border p-3 text-left transition-colors ${selected === index ? 'glass border-line-strong' : 'border-transparent hover:bg-inset'}`}>
                 <Folder size={20} aria-hidden="true" className="shrink-0 text-ink-muted" />
                 <span className="min-w-0 flex-1"><span className="block text-sm font-semibold">{item.name}</span><span className="mt-1 block text-xs text-ink-muted">{item.stack}</span></span>
                 <span className={`status-dot status-${item.health} shrink-0`} aria-label={item.label} />

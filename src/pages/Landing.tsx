@@ -19,7 +19,7 @@ function Question({ title, children }: { title: string; children: React.ReactNod
 export default function Landing() {
 
   return (
-    <div className="min-h-screen bg-canvas font-inter text-ink">
+    <div className="landing-page min-h-screen bg-canvas font-inter text-ink">
       <SiteNav />
       <main>
         <header className="mx-auto max-w-[var(--page-max-width)] px-6 pb-10 pt-12 text-center sm:pb-14 sm:pt-20">
@@ -61,7 +61,7 @@ export default function Landing() {
 
         <section aria-labelledby="integrations-heading" className="mx-auto max-w-[var(--page-max-width)] px-6 py-14 sm:py-20">
           <div className="flex flex-wrap items-end justify-between gap-4"><div><h2 id="integrations-heading" className="font-display text-2xl font-semibold sm:text-3xl">Connect your existing stack</h2><p className="mt-3 max-w-xl text-sm text-ink-muted">Bring usage, errors, revenue, deployments, and uptime into the same portfolio. Each source reports the metrics it supports.</p></div><Link to="/docs/connect" className="text-link inline-flex min-h-11 items-center gap-1.5 text-sm">Browse connection guides <ArrowRight size={14} aria-hidden="true" /></Link></div>
-          <ul className="mt-6 flex flex-wrap gap-2" aria-label="Available integrations">{INTEGRATIONS.map((name) => <li key={name} className="flex min-h-16 items-center gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm font-medium"><IntegrationLogo name={name} /><span>{name}</span></li>)}</ul>
+          <ul className="mt-6 flex flex-wrap gap-2" aria-label="Available integrations">{INTEGRATIONS.map((name) => <li key={name} className="glass flex min-h-16 items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium"><IntegrationLogo name={name} /><span>{name}</span></li>)}</ul>
         </section>
 
         <section aria-labelledby="questions-heading" className="mx-auto max-w-[var(--page-max-width)] px-6 pb-14 sm:pb-20">
@@ -78,14 +78,14 @@ export default function Landing() {
         </section>
 
         <section id="self-hosting" aria-labelledby="self-hosting-heading" className="mx-auto max-w-[var(--page-max-width)] px-6 pb-14 sm:pb-20">
-          <div className="grid gap-6 rounded-2xl border border-line bg-surface p-6 sm:p-8 md:grid-cols-2">
+          <div className="glass grid gap-6 rounded-2xl border p-6 sm:p-8 md:grid-cols-2">
             <div><Server size={22} aria-hidden="true" className="text-ink-muted" /><h2 id="self-hosting-heading" className="mt-4 font-display text-2xl font-semibold">Prefer your own infrastructure?</h2><p className="mt-3 text-sm leading-relaxed text-ink-secondary">Run your own copy of Stackduck. The quickstart covers the database, API configuration, secrets, and frontend setup.</p><Link to="/docs#quickstart" className="btn-ghost mt-5">Self-hosting guide <ArrowRight size={14} aria-hidden="true" /></Link></div>
             <div className="border-t border-line pt-6 md:border-l md:border-t-0 md:pl-6 md:pt-0"><Monitor size={22} aria-hidden="true" className="text-ink-muted" /><h3 className="mt-4 text-base font-semibold">Start with the source code</h3><code className="mt-3 block break-words rounded-lg bg-inset p-4 font-mono text-xs leading-relaxed">npx degit 0xUkobong/stackduck my-stackduck</code><p className="mt-3 text-xs leading-relaxed text-ink-muted">This command copies the repository. It does not install dependencies, configure the database, or start the app.</p><a href="https://github.com/0xUkobong/stackduck" target="_blank" rel="noreferrer" className="text-link mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm">View source on GitHub <ArrowRight size={14} aria-hidden="true" /></a></div>
           </div>
         </section>
 
         <section aria-labelledby="start-heading" className="mx-auto max-w-[var(--page-max-width)] px-6 pb-16">
-          <div className="rounded-2xl bg-feature p-8 text-center text-paper-white sm:p-12"><h2 id="start-heading" className="font-display text-2xl font-semibold sm:text-3xl">Give your projects one place to check in</h2><p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-paper-white/80">Start with a name. Connect your first source when you’re ready.</p><div className="mt-6 inline-block"><PortfolioCta inverse /></div></div>
+          <div className="landing-feature-glass rounded-2xl bg-feature p-8 text-center text-paper-white sm:p-12"><h2 id="start-heading" className="font-display text-2xl font-semibold sm:text-3xl">Give your projects one place to check in</h2><p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-paper-white/80">Start with a name. Connect your first source when you’re ready.</p><div className="mt-6 inline-block"><PortfolioCta inverse /></div></div>
         </section>
       </main>
       <SiteFooter />
