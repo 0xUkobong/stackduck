@@ -74,7 +74,7 @@ export default function Security() {
           <p>
             Found a security problem? Please report it privately through{' '}
             <a
-              href="https://github.com/0x-Sigmoid/stackduck/security/advisories/new"
+              href="https://github.com/0xUkobong/stackduck/security/advisories/new"
               target="_blank"
               rel="noreferrer"
               className="text-link"
@@ -85,7 +85,7 @@ export default function Security() {
             expect a first response within about a week; urgent, actively-exploited
             issues jump the queue. The full policy lives in{' '}
             <a
-              href="https://github.com/0x-Sigmoid/stackduck/blob/main/SECURITY.md"
+              href="https://github.com/0xUkobong/stackduck/blob/main/SECURITY.md"
               target="_blank"
               rel="noreferrer"
               className="text-link"

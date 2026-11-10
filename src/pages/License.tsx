@@ -27,7 +27,7 @@ export default function License() {
               No warranty, as open-source licenses go: the software is provided as-is. Read
               the full text in the repo:{' '}
               <a
-                href="https://github.com/0x-Sigmoid/stackduck/blob/main/LICENSE"
+                href="https://github.com/0xUkobong/stackduck/blob/main/LICENSE"
                 target="_blank"
                 rel="noreferrer"
                 className="text-link-emphasis text-link"

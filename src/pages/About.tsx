@@ -112,7 +112,7 @@ export default function About() {
                 for anyone else running more than one thing.
               </p>
               <p className="font-medium text-ink">
-                - <button className="text-link" onClick={() => setDevOpen(true)} title="About the developer">0xSigmoid</button>
+                - <button className="text-link" onClick={() => setDevOpen(true)} title="About the developer">@0xUkobong</button>
               </p>
             </div>
           </section>

@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "exports": 17,
+  "checks": [
+    "PNG pixel dimensions",
+    "local images and fonts loaded",
+    "text bounds",
+    "visual crop and hierarchy review",
+    "website and developer credit",
+    "coming-soon labels",
+    "profile PNGs under 2 MB",
+    "bio under 160 characters",
+    "pinned copy under 280 characters"
+  ],
+  "bioCharacters": 115,
+  "pinCharacters": 233
+}

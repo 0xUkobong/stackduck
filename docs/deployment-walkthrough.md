@@ -18,7 +18,7 @@ Use temporary hosting URLs first. Later, the intended addresses will be `https:/
 
 ## 2. Make sure GitHub contains the code you intend to deploy
 
-Open https://github.com/0x-Sigmoid/stackduck in your browser. Confirm that `backend/package.json`, `backend/railway.json`, and the latest frontend changes are present on your deployment branch. Railway and Vercel deploy the files on GitHub, not uncommitted files on your computer.
+Open https://github.com/0xUkobong/stackduck in your browser. Confirm that `backend/package.json`, `backend/railway.json`, and the latest frontend changes are present on your deployment branch. Railway and Vercel deploy the files on GitHub, not uncommitted files on your computer.
 
 Use your editor's source-control panel or GitHub Desktop to review, commit, and push the changes you want deployed. Never include `.env`, service-account JSON, or real keys. This guide does not commit or push anything for you.
 
@@ -32,7 +32,7 @@ Do not copy a localhost connection URL from `backend/.env.example`. That example
 
 ## 4. Create the API service
 
-In the same Railway project, choose New → GitHub Repo and select `0x-Sigmoid/stackduck`. If Railway asks for GitHub permission, grant access to this repository. Rename the new service `stackduck-api`.
+In the same Railway project, choose New → GitHub Repo and select `0xUkobong/stackduck`. If Railway asks for GitHub permission, grant access to this repository. Rename the new service `stackduck-api`.
 
 An initial deployment may fail while settings are incomplete; finish these settings before diagnosing that first failure. Open the API service's Settings and configure:
 
@@ -164,7 +164,7 @@ Commit and push this file using your editor or GitHub Desktop. It tells Vercel t
 
 ## 9. Deploy the frontend to Vercel
 
-Sign into Vercel → Add New → Project → import `0x-Sigmoid/stackduck`. Grant repository access if asked.
+Sign into Vercel → Add New → Project → import `0xUkobong/stackduck`. Grant repository access if asked.
 
 | Setting | Value |
 | --- | --- |

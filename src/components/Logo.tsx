@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-/** Duck mascot on two stack layers, shared with the favicon and exported brand assets. */
+/** Ivory 3D duck on navy; the favicon uses a matching small-size silhouette. */
 export function StackduckMark({ size = 32 }: { size?: number }) {
-  return <img src="/logo.svg" width={size} height={size} alt="Stackduck mark" className="shrink-0" />
+  return <img src="/logo-128-3d.png" srcSet="/logo-64-3d.png 64w, /logo-128-3d.png 128w, /logo-256-3d.png 256w" sizes={`${size}px`} width={size} height={size} alt="Stackduck mark" className="shrink-0" />
 }
 
 /** Full lockup: mark + Inter 600 wordmark. Theme-aware via `text-ink`

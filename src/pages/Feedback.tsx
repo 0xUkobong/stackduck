@@ -57,7 +57,7 @@ export default function Feedback() {
         </p>
         <p className="mt-6 border-t border-line pt-5 text-sm leading-relaxed text-ink-muted">
           For anything urgent or trackable, use{' '}
-          <a href="https://github.com/0x-Sigmoid/stackduck/issues" target="_blank" rel="noreferrer" className="text-link-emphasis text-link inline-flex items-center gap-1">
+          <a href="https://github.com/0xUkobong/stackduck/issues" target="_blank" rel="noreferrer" className="text-link-emphasis text-link inline-flex items-center gap-1">
             GitHub Issues <ArrowRight size={13} aria-hidden="true" />
           </a>
           .
@@ -73,7 +73,7 @@ export default function Feedback() {
               <p className="mt-1 font-inter text-sm text-ink-muted">
                 For anything urgent or trackable,{' '}
                 <a
-                  href="https://github.com/0x-Sigmoid/stackduck/issues"
+                  href="https://github.com/0xUkobong/stackduck/issues"
                   target="_blank"
                   rel="noreferrer"
                   className="text-link-emphasis text-link"

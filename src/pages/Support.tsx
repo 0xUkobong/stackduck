@@ -29,7 +29,7 @@ export default function Support() {
                 GitHub Issues is the bug tracker. Include what you clicked, what you expected, and your
                 browser; screenshots help more than paragraphs.
               </p>
-              <a href="https://github.com/0x-Sigmoid/stackduck/issues" target="_blank" rel="noreferrer" className="text-link-emphasis text-link mt-4 inline-flex items-center gap-1 text-sm">
+              <a href="https://github.com/0xUkobong/stackduck/issues" target="_blank" rel="noreferrer" className="text-link-emphasis text-link mt-4 inline-flex items-center gap-1 text-sm">
                 Open GitHub Issues <ArrowRight size={14} aria-hidden="true" />
               </a>
             </div>

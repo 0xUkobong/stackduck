@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
-import DeveloperModal from './DeveloperModal'
+import DiscordIcon from './DiscordIcon'
 import XIcon from './XIcon'
 
 function GitHubIcon({ size = 14 }: { size?: number }) {
@@ -12,23 +11,15 @@ function GitHubIcon({ size = 14 }: { size?: number }) {
   )
 }
 
-function TelegramIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M21.8 3.2 18.6 20c-.24 1.18-.88 1.47-1.78.92l-4.92-3.63-2.37 2.28c-.26.26-.48.48-.98.48l.35-5.01 9.12-8.24c.4-.35-.09-.55-.62-.2L6.12 13.7l-4.85-1.52c-1.06-.33-1.08-1.06.22-1.57L20.45 3.1c.88-.32 1.65.21 1.35 1.57z" />
-    </svg>
-  )
-}
-
 /** Source and developer contact links. */
 const SOCIALS: Array<{
   href: string
   label: string
   Icon: (props: { size?: number }) => React.ReactElement
 }> = [
-  { href: 'https://github.com/0x-Sigmoid/stackduck', label: 'GitHub', Icon: GitHubIcon },
-  { href: 'https://x.com/0x_Sigmoid', label: 'X', Icon: XIcon },
-  { href: 'https://t.me/xSigmoid', label: 'Telegram', Icon: TelegramIcon },
+  { href: 'https://github.com/0xUkobong/stackduck', label: 'GitHub', Icon: GitHubIcon },
+  { href: 'https://x.com/StackduckApp', label: 'X', Icon: XIcon },
+  { href: 'https://discord.gg/stackduck', label: 'Discord', Icon: DiscordIcon },
 ]
 
 const GROUPS: Array<{
@@ -49,7 +40,7 @@ const GROUPS: Array<{
       { to: '/support', label: 'Support' },
       { to: '/feedback', label: 'Feedback' },
       { to: '/changelog', label: 'Changelog' },
-      { to: 'https://github.com/0x-Sigmoid/stackduck', label: 'GitHub', external: true },
+      { to: 'https://github.com/0xUkobong/stackduck', label: 'GitHub', external: true },
     ],
   },
   {
@@ -65,11 +56,8 @@ const GROUPS: Array<{
 
 /** Shared public footer: brand block with weight + grouped link columns. */
 export default function SiteFooter() {
-  const [devOpen, setDevOpen] = useState(false)
-
   return (
-    <>
-      <footer className="border-t border-line">
+    <footer className="border-t border-line">
         <div className="mx-auto max-w-[1200px] px-5 py-12 sm:px-6 sm:py-16">
           <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10">
             {/* Brand block — more visual weight than the link columns. */}
@@ -87,8 +75,20 @@ export default function SiteFooter() {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`${label === 'GitHub' ? 'Stackduck source' : '0xSigmoid on ' + label}`}
-                    title={`${label === 'GitHub' ? 'Stackduck source' : '0xSigmoid on ' + label}`}
+                    aria-label={
+                      label === 'GitHub'
+                        ? 'Stackduck source'
+                        : label === 'X'
+                          ? '@StackduckApp on X'
+                          : `Stackduck on ${label}`
+                    }
+                    title={
+                      label === 'GitHub'
+                        ? 'Stackduck source'
+                        : label === 'X'
+                          ? '@StackduckApp on X'
+                          : `Stackduck on ${label}`
+                    }
                     className="rounded-lg p-2 text-ink-muted transition-colors duration-150 hover:bg-surface hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                   >
                     <Icon size={16} />
@@ -132,21 +132,12 @@ export default function SiteFooter() {
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-inter text-xs text-ink-muted">
               <span>Open source under the MIT License</span>
               <Link to="/license" className="text-link">License</Link>
-              <a href="https://github.com/0x-Sigmoid/stackduck" target="_blank" rel="noreferrer" className="text-link">
+              <a href="https://github.com/0xUkobong/stackduck" target="_blank" rel="noreferrer" className="text-link">
                 Source on GitHub
               </a>
             </div>
-            <button
-              onClick={() => setDevOpen(true)}
-              className="text-link shrink-0 text-left font-inter text-xs font-medium text-ink-muted hover:text-ink sm:text-right"
-              title="About the developer"
-            >
-              Developed by 0xSigmoid
-            </button>
           </div>
         </div>
-      </footer>
-      {devOpen && <DeveloperModal onClose={() => setDevOpen(false)} />}
-    </>
+    </footer>
   )
 }

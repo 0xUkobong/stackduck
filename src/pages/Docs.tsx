@@ -127,7 +127,7 @@ export default function Docs() {
           </ul>
         </div>
         <div className="mt-3">
-          <Code>{`npx degit 0x-Sigmoid/stackduck my-stackduck
+          <Code>{`npx degit 0xUkobong/stackduck my-stackduck
 cd my-stackduck`}</Code>
         </div>
         <div className="mt-3 flex flex-col gap-3 text-body text-ink-muted">
@@ -264,12 +264,12 @@ npm run dev   # the whole UI against your local API`}</Code>
           <p>
             Stackduck is MIT licensed and lives at{' '}
             <a
-              href="https://github.com/0x-Sigmoid/stackduck"
+              href="https://github.com/0xUkobong/stackduck"
               target="_blank"
               rel="noreferrer"
               className="text-link-emphasis text-link"
             >
-              github.com/0x-Sigmoid/stackduck
+              github.com/0xUkobong/stackduck
             </a>
             . To run your own copy, follow <a href="#quickstart" className="text-link-emphasis text-link">Quickstart</a> above;
             a few notes that only matter once you're running it: scheduled polling and
@@ -282,7 +282,7 @@ npm run dev   # the whole UI against your local API`}</Code>
           <p>
             Bugs and ideas belong in{' '}
             <a
-              href="https://github.com/0x-Sigmoid/stackduck/issues"
+              href="https://github.com/0xUkobong/stackduck/issues"
               target="_blank"
               rel="noreferrer"
               className="text-link-emphasis text-link"

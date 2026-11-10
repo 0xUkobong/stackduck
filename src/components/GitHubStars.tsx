@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Star } from 'lucide-react'
 
-const REPO = '0x-Sigmoid/stackduck'
+const REPO = '0xUkobong/stackduck'
 const CACHE_KEY = 'stackduck:gh-stars:' + REPO
 const CACHE_TTL_MS = 60 * 60 * 1000
 

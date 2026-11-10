@@ -1,0 +1,24 @@
+{
+  "result": "passed",
+  "routes": [
+    "/",
+    "/signin",
+    "/docs"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "widths": [
+    1280,
+    390
+  ],
+  "checks": [
+    "responsive 3D logo loaded",
+    "no horizontal overflow",
+    "theme preserved",
+    "favicon and touch icons served",
+    "new social preview served",
+    "no JavaScript page errors"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "brand": "Stackduck",
+  "campaign": "Coming soon",
+  "account": "@StackduckApp",
+  "developer": "@0xUkobong",
+  "website": "https://stackduck.app",
+  "assets": [
+    {
+      "name": "01-profile-navy-400",
+      "width": 400,
+      "height": 400,
+      "theme": "navy",
+      "usage": "Primary 3D profile image, centered with circular-crop room.",
+      "bytes": 64110,
+      "jpeg": false
+    },
+    {
+      "name": "01-profile-navy-1024",
+      "width": 1024,
+      "height": 1024,
+      "theme": "navy",
+      "usage": "Primary 3D profile image, centered with circular-crop room.",
+      "bytes": 350542,
+      "jpeg": false
+    },
+    {
+      "name": "02-profile-mint-400",
+      "width": 400,
+      "height": 400,
+      "theme": "mint",
+      "usage": "Alternative mint profile image with the existing navy app mark.",
+      "bytes": 51724,
+      "jpeg": false
+    },
+    {
+      "name": "02-profile-3d-400",
+      "width": 400,
+      "height": 400,
+      "theme": "navy",
+      "usage": "3D campaign mascot profile alternative, centered for circular cropping.",
+      "bytes": 113645,
+      "jpeg": false
+    },
+    {
+      "name": "03-x-header-navy",
+      "width": 1500,
+      "height": 500,
+      "theme": "navy",
+      "usage": "X header. Critical text avoids the lower-left avatar overlap and the top/bottom edges.",
+      "bytes": 227864,
+      "jpeg": true
+    },
+    {
+      "name": "03-x-header-mint",
+      "width": 1500,
+      "height": 500,
+      "theme": "mint",
+      "usage": "X header. Critical text avoids the lower-left avatar overlap and the top/bottom edges.",
+      "bytes": 245109,
+      "jpeg": true
+    },
+    {
+      "name": "04-pinned-post-navy",
+      "width": 1600,
+      "height": 900,
+      "theme": "navy",
+      "usage": "Primary coming-soon cover for the pinned X post, LinkedIn feed, or launch announcement.",
+      "bytes": 504875,
+      "jpeg": true
+    },
+    {
+      "name": "04-pinned-post-mint",
+      "width": 1600,
+      "height": 900,
+      "theme": "mint",
+      "usage": "Primary coming-soon cover for the pinned X post, LinkedIn feed, or launch announcement.",
+      "bytes": 572806,
+      "jpeg": true
+    },
+    {
+      "name": "05-feed-square-navy",
+      "width": 1080,
+      "height": 1080,
+      "theme": "navy",
+      "usage": "Square social announcement for Instagram, X, LinkedIn, and community posts.",
+      "bytes": 394628,
+      "jpeg": true
+    },
+    {
+      "name": "05-feed-square-mint",
+      "width": 1080,
+      "height": 1080,
+      "theme": "mint",
+      "usage": "Square social announcement for Instagram, X, LinkedIn, and community posts.",
+      "bytes": 444704,
+      "jpeg": true
+    },
+    {
+      "name": "06-feed-portrait",
+      "width": 1080,
+      "height": 1350,
+      "theme": "navy",
+      "usage": "4:5 portrait feed poster and carousel opening slide.",
+      "bytes": 580549,
+      "jpeg": true
+    },
+    {
+      "name": "07-story-coming-soon",
+      "width": 1080,
+      "height": 1920,
+      "theme": "navy",
+      "usage": "9:16 Instagram/Facebook story or short-video cover. Preview overlays before uploading.",
+      "bytes": 737925,
+      "jpeg": true
+    },
+    {
+      "name": "08-link-preview",
+      "width": 1200,
+      "height": 630,
+      "theme": "navy",
+      "usage": "1200 x 630 manual link-card or press preview image. Supplied as an asset; site metadata is unchanged.",
+      "bytes": 239670,
+      "jpeg": true
+    },
+    {
+      "name": "09-linkedin-personal-header",
+      "width": 1584,
+      "height": 396,
+      "theme": "mint",
+      "usage": "LinkedIn personal background, not a company-page banner. Copy avoids lower-left profile overlap.",
+      "bytes": 171584,
+      "jpeg": true
+    },
+    {
+      "name": "10-youtube-banner",
+      "width": 2560,
+      "height": 1440,
+      "theme": "navy",
+      "usage": "YouTube banner. Essential content is in the central 1546 x 423 band.",
+      "bytes": 298304,
+      "jpeg": true
+    },
+    {
+      "name": "11-carousel-02-workflow",
+      "width": 1080,
+      "height": 1350,
+      "theme": "mint",
+      "usage": "Carousel slide 2. Pair after 06-feed-portrait, then 12-carousel-03-follow.",
+      "bytes": 94949,
+      "jpeg": true
+    },
+    {
+      "name": "12-carousel-03-follow",
+      "width": 1080,
+      "height": 1350,
+      "theme": "navy",
+      "usage": "Carousel final slide and standalone follow/coming-soon teaser.",
+      "bytes": 321869,
+      "jpeg": true
+    }
+  ]
+}

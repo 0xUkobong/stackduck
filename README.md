@@ -112,7 +112,7 @@ The steps for standing up the NestJS API are in [backend/RAILWAY.md](backend/RAI
 
 ## Contributing
 
-Stackduck is open source, and contributions are welcome. Read the [contribution guide](CONTRIBUTING.md), [report a bug](https://github.com/0x-Sigmoid/stackduck/issues/new?template=bug_report.yml), or [request a feature](https://github.com/0x-Sigmoid/stackduck/issues/new?template=feature_request.yml). Pull requests use the repository checklist. Please do not post credentials or security-sensitive vulnerability details in public issues.
+Stackduck is open source, and contributions are welcome. Read the [contribution guide](CONTRIBUTING.md), [report a bug](https://github.com/0xUkobong/stackduck/issues/new?template=bug_report.yml), or [request a feature](https://github.com/0xUkobong/stackduck/issues/new?template=feature_request.yml). Pull requests use the repository checklist. Please do not post credentials or security-sensitive vulnerability details in public issues.
 
 ## UI verification
 
