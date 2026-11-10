@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://stackduck.app/</loc></url>
+  <url><loc>https://stackduck.app/about</loc></url>
+  <url><loc>https://stackduck.app/docs</loc></url>
+  <url><loc>https://stackduck.app/docs/connect</loc></url>
+  <url><loc>https://stackduck.app/docs/connect/firebase</loc></url>
+  <url><loc>https://stackduck.app/docs/connect/stripe</loc></url>
+  <url><loc>https://stackduck.app/docs/connect/supabase</loc></url>
+  <url><loc>https://stackduck.app/docs/connect/webhook</loc></url>
+  <url><loc>https://stackduck.app/pricing</loc></url>
+  <url><loc>https://stackduck.app/support</loc></url>
+  <url><loc>https://stackduck.app/feedback</loc></url>
+  <url><loc>https://stackduck.app/changelog</loc></url>
+  <url><loc>https://stackduck.app/security</loc></url>
+  <url><loc>https://stackduck.app/privacy</loc></url>
+  <url><loc>https://stackduck.app/terms</loc></url>
+  <url><loc>https://stackduck.app/license</loc></url>
+</urlset>

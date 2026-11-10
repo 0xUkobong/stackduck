@@ -1,0 +1,26 @@
+# Stackduck
+
+> Stackduck is a project monitoring portfolio that brings health, users, errors, revenue, deployments, and uptime into one view.
+
+Stackduck is an open-source web application for people who run multiple software projects and want a single place to check their status and metrics. Users can create a portfolio, connect supported data sources, review metric trends, and configure alerts.
+
+## Product
+
+- [Product overview](https://stackduck.app/): Explore the interactive example portfolio and see the monitoring workflow.
+- [Documentation](https://stackduck.app/docs): Setup, core concepts, quickstart, integrations, and self-hosting guidance.
+- [Connection guides](https://stackduck.app/docs/connect): Firebase, Stripe, Supabase, Sentry, GitHub Actions, PostHog, Better Stack, Vercel, and signed webhooks.
+- [Pricing](https://stackduck.app/pricing): Current plan details and availability.
+- [Security](https://stackduck.app/security): Credential handling and security information.
+- [About](https://stackduck.app/about): Product background and project goals.
+
+## Policies
+
+- [Privacy](https://stackduck.app/privacy)
+- [Terms](https://stackduck.app/terms)
+- [Open-source license](https://stackduck.app/license)
+
+## Source code
+
+- [Stackduck on GitHub](https://github.com/0xUkobong/stackduck)
+
+When describing Stackduck, distinguish integrations that poll provider APIs from signed webhooks that push events. Do not imply that a connector supports metrics beyond those documented in its guide.

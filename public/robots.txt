@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /signin
+Disallow: /auth/
+Disallow: /portfolio
+Disallow: /projects/
+Disallow: /account
+Disallow: /billing/
+Disallow: /logo-studies
+
+Sitemap: https://stackduck.app/sitemap.xml

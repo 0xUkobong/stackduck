@@ -30,6 +30,7 @@ import NotFound from './pages/NotFound'
 import UserMenu from './components/UserMenu'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import LogoStudies from './pages/LogoStudies'
+import SeoMetadata from './components/SeoMetadata'
 import { LayoutDashboard } from 'lucide-react'
 
 const MARKETING_PATHS = ['/', '/about', '/docs', '/pricing', '/support', '/feedback', '/changelog', '/license', '/privacy', '/terms', '/security', '/logo-studies']
@@ -138,6 +139,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <RouteFocus />
+      <SeoMetadata />
       <a href="#main-content" className="skip-link" onClick={event => { event.preventDefault(); const main = document.querySelector<HTMLElement>('main'); main?.setAttribute('tabindex', '-1'); main?.focus(); main?.scrollIntoView() }}>Skip to content</a>
       <div className="min-h-screen bg-canvas font-inter text-ink">
         <Header user={user ?? null} />
