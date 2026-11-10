@@ -298,7 +298,27 @@ Redeploy. Test sign-in, then test repository import from the portfolio. Import r
 
 [Creating a GitHub OAuth app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app), [callback URL rules](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps).
 
-## 15. Prove metrics and alerts work
+## 15. Enable X sign-in
+
+In the [X Developer Console](https://developer.x.com/en/portal/dashboard), create or open a Project and App. In the app's user authentication settings, enable OAuth 2.0 and select a Web App (confidential client). Set the website URL to `https://stackduck.app` and register this exact callback URL:
+
+```text
+https://api.stackduck.app/v1/auth/x/callback
+```
+
+Copy the Client ID and Client Secret into Railway variables:
+
+```text
+X_CLIENT_ID=YOUR-X-CLIENT-ID
+X_CLIENT_SECRET=YOUR-X-CLIENT-SECRET
+X_CALLBACK_URL=https://api.stackduck.app/v1/auth/x/callback
+```
+
+The sign-in asks X only for `users.read` and `users.email`. The flow uses Authorization Code with PKCE, signed state bound to the browser, and a server-side client secret. X may not return a confirmed email for every account; Stackduck can still identify that account using its X user ID. Redeploy the API and test both sign-in and new-account consent from `https://stackduck.app/signin`.
+
+[X OAuth 2.0 Authorization Code with PKCE](https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code), [X Get My User](https://docs.x.com/x-api/users/get-my-user).
+
+## 16. Prove metrics and alerts work
 
 In Stackduck, create a project named `Deployment check`. Add a Signed/Generic webhook source. Copy the generated ingest URL and signing secret into a private note. The URL must start with your public API address, not localhost. The source should wait for its first event.
 
@@ -347,7 +367,7 @@ Remove-Item Env:STACKDUCK_SIGNING_SECRET
 Remove-Item Env:STACKDUCK_INGEST_URL
 ```
 
-## 16. Complete operational checks
+## 17. Complete operational checks
 
 Enable scheduled backups on the TimescaleDB service's attached volume where supported. Railway's volume backups are distinct from database-specific point-in-time recovery; do not assume your marketplace template includes PITR. Restore a backup to a separate test environment/service and confirm the restored accounts, projects, and metrics are present. Never test restoration over your working database.
 
@@ -357,7 +377,7 @@ The current API startup performs Timescale extension/hypertable setup. Do not bl
 
 [Railway volume backups](https://docs.railway.com/volumes/backups).
 
-## 17. Keep billing disabled until the remaining code is implemented
+## 18. Keep billing disabled until the remaining code is implemented
 
 Stripe as a monitoring connector and Kelviq as Stackduck's subscription billing provider are separate integrations. You can monitor Stripe revenue without enabling Stackduck paid plans.
 

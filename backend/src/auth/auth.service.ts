@@ -93,7 +93,7 @@ export class AuthService {
 
   /** OAuth upsert: find by provider link, else by email (link), else create. */
   async upsertOAuth(
-    provider: 'google' | 'github',
+    provider: 'google' | 'github' | 'x',
     providerId: string,
     email: string | undefined,
     displayName: string | undefined,

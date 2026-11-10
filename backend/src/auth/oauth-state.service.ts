@@ -1,17 +1,19 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { randomBytes } from 'crypto';
+import { createHash, randomBytes } from 'crypto';
 import type { Request, Response } from 'express';
 
 const COOKIE = 'stackduck_oauth_state';
+const PKCE_COOKIE = 'stackduck_x_pkce';
 const TTL = '5m';
 
-export type OAuthProvider = 'google' | 'github';
+export type OAuthProvider = 'google' | 'github' | 'x';
 
 export interface OAuthStateClaim {
   provider: OAuthProvider;
   consent: boolean;
+  codeVerifier?: string;
 }
 
 export interface OAuthImportClaim {
@@ -52,6 +54,18 @@ export class OAuthStateService {
 
   /** Called on the authorize redirect: mints state, sets the binding cookie. */
   issue(req: Request, res: Response, provider: OAuthProvider): string {
+    return this.issueState(req, res, provider);
+  }
+
+  /** Issues X's PKCE verifier inside the signed state, bound to this browser. */
+  issueWithPkce(req: Request, res: Response, provider: OAuthProvider): { state: string; codeChallenge: string } {
+    const codeVerifier = randomBytes(32).toString('base64url');
+    const state = this.issueState(req, res, provider, codeVerifier);
+    const codeChallenge = createHash('sha256').update(codeVerifier).digest('base64url');
+    return { state, codeChallenge };
+  }
+
+  private issueState(req: Request, res: Response, provider: OAuthProvider, codeVerifier?: string): string {
     const nonce = cryptoRandom();
     const consent = req.query?.consent === '1';
     const state = this.jwt.sign(
@@ -65,6 +79,15 @@ export class OAuthStateService {
       path: '/v1/auth',
       maxAge: 5 * 60 * 1000,
     });
+    if (codeVerifier) {
+      res.cookie(PKCE_COOKIE, codeVerifier, {
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: isSecure(req),
+        path: '/v1/auth',
+        maxAge: 5 * 60 * 1000,
+      });
+    }
     return state;
   }
 
@@ -72,6 +95,7 @@ export class OAuthStateService {
   verify(req: Request, res: Response, provider: OAuthProvider): OAuthStateClaim {
     const state = firstString(req.query?.['state']);
     const nonce = readCookie(req.headers?.cookie, COOKIE);
+    const codeVerifier = provider === 'x' ? readCookie(req.headers?.cookie, PKCE_COOKIE) : null;
     if (!state || !nonce) {
       throw new BadRequestException({
         error: { code: 'oauth_state_missing', message: 'Sign-in could not be verified — start again from the sign-in page.' },
@@ -89,6 +113,7 @@ export class OAuthStateService {
       payload['purpose'] !== 'oauth_state' ||
       payload['provider'] !== provider ||
       typeof payload['nonce'] !== 'string' ||
+      (provider === 'x' && (!codeVerifier || !/^[A-Za-z0-9._~-]{43,128}$/.test(codeVerifier))) ||
       !timingSafeEqual(payload['nonce'] as string, nonce)
     ) {
       throw new BadRequestException({
@@ -96,7 +121,12 @@ export class OAuthStateService {
       });
     }
     res.clearCookie(COOKIE, { path: '/v1/auth' });
-    return { provider, consent: payload['consent'] === true };
+    if (provider === 'x') res.clearCookie(PKCE_COOKIE, { path: '/v1/auth' });
+    return {
+      provider,
+      consent: payload['consent'] === true,
+      ...(codeVerifier ? { codeVerifier } : {}),
+    };
   }
 
   /**

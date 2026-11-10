@@ -82,7 +82,7 @@ export async function signOut(): Promise<void> {
 }
 
 /** Backend OAuth authorize URL (full-page redirect; consent rides along). */
-export function oauthStartUrl(provider: 'google' | 'github', consent: boolean): string {
+export function oauthStartUrl(provider: 'google' | 'github' | 'x', consent: boolean): string {
   const url = new URL(`${API_BASE}/v1/auth/${provider}`)
   if (consent) url.searchParams.set('consent', '1')
   return url.toString()

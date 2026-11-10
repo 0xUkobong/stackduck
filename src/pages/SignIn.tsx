@@ -2,11 +2,12 @@ import ThemeSwitcher from '../components/ThemeSwitcher'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import IntegrationLogo from '../components/IntegrationLogo'
+import XIcon from '../components/XIcon'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { StackduckLockup } from '../components/Logo'
 import { api, ApiError } from '../lib/api'
 import { adoptTokens, oauthStartUrl, refreshUser, subscribeSession } from '../lib/session'
-import type { OAuthKind } from '../lib/oauth'
+import type { OAuthSignInKind } from '../lib/oauth'
 
 type Mode = 'signin' | 'signup'
 
@@ -117,6 +118,10 @@ export default function SignIn() {
   const [error, setError] = useState<string | null>(() =>
     params.get('oauth') === 'failed'
       ? 'That provider sign-in didn’t complete. Try again.'
+      : params.get('oauth') === 'unavailable'
+        ? 'X sign-in is not configured yet. Try Google, GitHub, or email instead.'
+        : params.get('oauth') === 'cancelled'
+          ? 'X sign-in was cancelled. You can try again whenever you’re ready.'
       : null,
   )
   const [busy, setBusy] = useState(false)
@@ -174,7 +179,7 @@ export default function SignIn() {
     }
   }
 
-  async function onOAuth(kind: OAuthKind) {
+  async function onOAuth(kind: OAuthSignInKind) {
     if (isSignup && !consent) {
       setError(friendlyError('consent_required', mode))
       return
@@ -292,10 +297,10 @@ export default function SignIn() {
 
         <div id="auth-panel" role="tabpanel" aria-labelledby={'auth-tab-' + mode} key={mode} className="fade-swap">
           <div className="mt-5 flex flex-col gap-2.5">
-            {(['google', 'github'] as OAuthKind[]).map((kind) => (
+            {(['google', 'github', 'x'] as OAuthSignInKind[]).map((kind) => (
               <button key={kind} className="btn-ghost flex w-full items-center justify-center gap-2" disabled={busy || (isSignup && !consent)} onClick={() => void onOAuth(kind)}>
-                {kind === 'google' ? <GoogleIcon /> : <GitHubIcon />}
-                {`Continue with ${kind === 'google' ? 'Google' : 'GitHub'}`}
+                {kind === 'google' ? <GoogleIcon /> : kind === 'github' ? <GitHubIcon /> : <XIcon size={18} />}
+                {`Continue with ${kind === 'google' ? 'Google' : kind === 'github' ? 'GitHub' : 'X'}`}
               </button>
             ))}
           </div>

@@ -7,6 +7,7 @@ import type { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { IntegrationsService } from './integrations.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { OAuthStateService } from './oauth-state.service';
 import {
   GithubCallbackGuard,
   GithubExchangeGuard,
@@ -62,6 +63,7 @@ export class AuthController {
     private readonly auth: AuthService,
     private readonly integrations: IntegrationsService,
     private readonly config: ConfigService,
+    private readonly oauthStates: OAuthStateService,
   ) {}
 
   private redirectWithTokens(res: Response, tokens: { accessToken: string; refreshToken: string }) {
@@ -207,6 +209,96 @@ export class AuthController {
     return this.redirectWithTokens(res, tokens);
   }
 
+  /** X sign-in uses OAuth 2.0 Authorization Code with PKCE (confidential web app). */
+  @Get('x')
+  xStart(@Req() req: Request, @Res() res: Response) {
+    const clientId = this.config.get<string>('X_CLIENT_ID');
+    const callbackUrl = this.config.get<string>('X_CALLBACK_URL') ?? 'http://localhost:3001/v1/auth/x/callback';
+    if (!clientId || !this.config.get<string>('X_CLIENT_SECRET')) {
+      return res.redirect(this.appUrl('/signin?oauth=unavailable'));
+    }
+
+    const { state, codeChallenge } = this.oauthStates.issueWithPkce(req, res, 'x');
+    const authorize = new URL('https://x.com/i/oauth2/authorize');
+    authorize.search = new URLSearchParams({
+      response_type: 'code',
+      client_id: clientId,
+      redirect_uri: callbackUrl,
+      scope: 'users.read users.email',
+      state,
+      code_challenge: codeChallenge,
+      code_challenge_method: 'S256',
+    }).toString();
+    return res.redirect(authorize.toString());
+  }
+
+  @Get('x/callback')
+  async xCallback(@Req() req: Request, @Res() res: Response) {
+    let oauthState: OAuthStateClaim;
+    try {
+      oauthState = this.oauthStates.verify(req, res, 'x');
+    } catch {
+      return res.redirect(this.appUrl('/signin?oauth=failed'));
+    }
+
+    if (firstQueryString(req.query?.['error'])) {
+      return res.redirect(this.appUrl('/signin?oauth=cancelled'));
+    }
+    const code = firstQueryString(req.query?.['code']);
+    const clientId = this.config.get<string>('X_CLIENT_ID');
+    const clientSecret = this.config.get<string>('X_CLIENT_SECRET');
+    const callbackUrl = this.config.get<string>('X_CALLBACK_URL') ?? 'http://localhost:3001/v1/auth/x/callback';
+    if (!code || !oauthState.codeVerifier || !clientId || !clientSecret) {
+      return res.redirect(this.appUrl('/signin?oauth=failed'));
+    }
+
+    try {
+      const basicCredentials = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+      const tokenResponse = await fetch('https://api.x.com/2/oauth2/token', {
+        method: 'POST',
+        headers: {
+          Authorization: `Basic ${basicCredentials}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          code,
+          grant_type: 'authorization_code',
+          redirect_uri: callbackUrl,
+          code_verifier: oauthState.codeVerifier,
+        }),
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!tokenResponse.ok) return res.redirect(this.appUrl('/signin?oauth=failed'));
+      const tokenBody = await tokenResponse.json() as { access_token?: unknown };
+      if (typeof tokenBody.access_token !== 'string' || !tokenBody.access_token) {
+        return res.redirect(this.appUrl('/signin?oauth=failed'));
+      }
+
+      const profileResponse = await fetch('https://api.x.com/2/users/me?user.fields=profile_image_url,confirmed_email', {
+        headers: { Authorization: `Bearer ${tokenBody.access_token}` },
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!profileResponse.ok) return res.redirect(this.appUrl('/signin?oauth=failed'));
+      const profileBody = await profileResponse.json() as {
+        data?: { id?: unknown; name?: unknown; username?: unknown; profile_image_url?: unknown; confirmed_email?: unknown };
+      };
+      const profile = profileBody.data;
+      if (!profile || typeof profile.id !== 'string') return res.redirect(this.appUrl('/signin?oauth=failed'));
+
+      const tokens = await this.auth.upsertOAuth(
+        'x',
+        profile.id,
+        typeof profile.confirmed_email === 'string' ? profile.confirmed_email : undefined,
+        typeof profile.name === 'string' ? profile.name : typeof profile.username === 'string' ? profile.username : undefined,
+        typeof profile.profile_image_url === 'string' ? profile.profile_image_url : undefined,
+        oauthState.consent,
+      );
+      return this.redirectWithTokens(res, tokens);
+    } catch {
+      return res.redirect(this.appUrl('/signin?oauth=failed'));
+    }
+  }
+
   // OAuth import — start guard accepts the JWT from the header or a one-time
   // ?token= query (full-page navigation carries no headers), binds userId
   // into signed state; token stored encrypted, browser returns to the picker.
@@ -250,7 +342,8 @@ function toMe(user: {
   const providers: string[] = [];
   if (user.passwordHash) providers.push('password');
   if (user.providerKey?.startsWith('google:')) providers.push('google');
-  else if (user.providerKey?.startsWith('github:')) providers.push('github');
+  if (user.providerKey?.startsWith('github:')) providers.push('github');
+  if (user.providerKey?.startsWith('x:')) providers.push('x');
   return {
     id: user.id,
     email: user.email,
@@ -260,4 +353,9 @@ function toMe(user: {
     providers,
     prefs: user.prefs ?? null,
   };
+}
+
+function firstQueryString(value: unknown): string | null {
+  if (Array.isArray(value)) value = value[0];
+  return typeof value === 'string' && value.length > 0 ? value : null;
 }

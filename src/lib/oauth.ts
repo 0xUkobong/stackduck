@@ -3,6 +3,7 @@ import { importStartUrl } from './session'
 import type { CreatedProject } from './contracts'
 
 export type OAuthKind = 'github' | 'google'
+export type OAuthSignInKind = OAuthKind | 'x'
 
 export interface ImportItem {
   /** stable id (repo id / GCP project id) */
