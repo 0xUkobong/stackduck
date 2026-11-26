@@ -10,7 +10,7 @@ Website: https://stackduck.app
 
 Bio:
 
-Your stack. One clear view. Project health, metrics, and alerts in one portfolio. Built by @0xUkobong. Coming soon.
+Your stack. One clear view. Project health, metrics, and alerts in one portfolio. Built by @xukobong. Coming soon.
 
 ## Pinned coming-soon post
 
@@ -20,7 +20,7 @@ Your stack. One clear view. 🦆
 
 Meet Stackduck: usage, errors, revenue, deployments, and uptime in one project portfolio.
 
-Built by @0xUkobong. Coming soon.
+Built by @xukobong. Coming soon.
 
 Follow @StackduckApp for previews and launch updates.
 
@@ -48,7 +48,7 @@ Create a project. Connect your stack. See what matters.
 
 That's the idea behind Stackduck: one portfolio for project health, metrics, and alerts.
 
-Built by @0xUkobong. Follow @StackduckApp for the launch.
+Built by @xukobong. Follow @StackduckApp for the launch.
 
 https://stackduck.app
 
@@ -60,17 +60,17 @@ A clearer view of your stack is on the way. 🦆
 
 Follow @StackduckApp for previews and launch updates.
 
-Built by @0xUkobong.
+Built by @xukobong.
 
 https://stackduck.app
 
 ## Image alt text
 
 - Profile: Stackduck's ivory duck-and-stack mark with an amber beak and mint base on navy.
-- Navy pinned cover: Stackduck. Your stack. One clear view. Usage, errors, revenue, deployments and uptime, together. Coming soon. White 3D duck sculpture above ivory and mint stack layers. stackduck.app. @StackduckApp. Built by @0xUkobong.
-- Mint pinned cover: Stackduck. Your stack. One clear view. Coming soon. Navy 3D duck sculpture on a mint background. stackduck.app. @StackduckApp. Built by @0xUkobong.
-- Square feed: Stackduck. Less switching. More building. Your project portfolio, in one place. Coming soon. 3D duck mascot. stackduck.app. @StackduckApp. Built by @0xUkobong.
-- Workflow carousel: Built for the way you build. 1. Create a project. 2. Connect your stack. 3. See what matters. stackduck.app. @StackduckApp. Built by @0xUkobong.
-- Follow carousel: A clearer view is on the way. Coming soon. Follow @StackduckApp. stackduck.app. Built by @0xUkobong.
+- Navy pinned cover: Stackduck. Your stack. One clear view. Usage, errors, revenue, deployments and uptime, together. Coming soon. White 3D duck sculpture above ivory and mint stack layers. stackduck.app. @StackduckApp. Built by @xukobong.
+- Mint pinned cover: Stackduck. Your stack. One clear view. Coming soon. Navy 3D duck sculpture on a mint background. stackduck.app. @StackduckApp. Built by @xukobong.
+- Square feed: Stackduck. Less switching. More building. Your project portfolio, in one place. Coming soon. 3D duck mascot. stackduck.app. @StackduckApp. Built by @xukobong.
+- Workflow carousel: Built for the way you build. 1. Create a project. 2. Connect your stack. 3. See what matters. stackduck.app. @StackduckApp. Built by @xukobong.
+- Follow carousel: A clearer view is on the way. Coming soon. Follow @StackduckApp. stackduck.app. Built by @xukobong.
 
 Copy is supplied as a draft. No posting, scheduling, or account changes have been performed.

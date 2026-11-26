@@ -12,7 +12,7 @@ const organization = {
   name: 'Stackduck',
   url: `${origin}/`,
   logo: `${origin}/logo-512-3d.png`,
-  sameAs: ['https://github.com/0xUkobong/stackduck', 'https://x.com/StackduckApp'],
+  sameAs: ['https://github.com/xukobong/stackduck', 'https://x.com/StackduckApp'],
 }
 
 function setMeta(html, attribute, key, content) {

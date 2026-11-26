@@ -2,7 +2,7 @@
 
 Ready-to-upload PNG graphics, JPEG alternatives, editable HTML sources, and original illustration assets.
 
-Brand account: **@StackduckApp** · Website: **https://stackduck.app** · Developer credit: **Built by @0xUkobong**
+Brand account: **@StackduckApp** · Website: **https://stackduck.app** · Developer credit: **Built by @xukobong**
 
 ## Start here
 

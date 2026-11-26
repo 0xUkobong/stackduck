@@ -17,7 +17,7 @@ const SOCIALS: Array<{
   label: string
   Icon: (props: { size?: number }) => React.ReactElement
 }> = [
-  { href: 'https://github.com/0xUkobong/stackduck', label: 'GitHub', Icon: GitHubIcon },
+  { href: 'https://github.com/xukobong/stackduck', label: 'GitHub', Icon: GitHubIcon },
   { href: 'https://x.com/StackduckApp', label: 'X', Icon: XIcon },
   { href: 'https://discord.gg/stackduck', label: 'Discord', Icon: DiscordIcon },
 ]
@@ -40,7 +40,7 @@ const GROUPS: Array<{
       { to: '/support', label: 'Support' },
       { to: '/feedback', label: 'Feedback' },
       { to: '/changelog', label: 'Changelog' },
-      { to: 'https://github.com/0xUkobong/stackduck', label: 'GitHub', external: true },
+      { to: 'https://github.com/xukobong/stackduck', label: 'GitHub', external: true },
     ],
   },
   {
@@ -132,7 +132,7 @@ export default function SiteFooter() {
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-inter text-xs text-ink-muted">
               <span>Open source under the MIT License</span>
               <Link to="/license" className="text-link">License</Link>
-              <a href="https://github.com/0xUkobong/stackduck" target="_blank" rel="noreferrer" className="text-link">
+              <a href="https://github.com/xukobong/stackduck" target="_blank" rel="noreferrer" className="text-link">
                 Source on GitHub
               </a>
             </div>

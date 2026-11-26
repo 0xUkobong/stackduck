@@ -60,7 +60,7 @@ function Header({ user }: { user: BackendUser | null }) {
           {user ? (
             <>
               <a
-                href="https://github.com/0xUkobong/stackduck"
+                href="https://github.com/xukobong/stackduck"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Stackduck on GitHub"

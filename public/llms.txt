@@ -21,6 +21,6 @@ Stackduck is an open-source web application for people who run multiple software
 
 ## Source code
 
-- [Stackduck on GitHub](https://github.com/0xUkobong/stackduck)
+- [Stackduck on GitHub](https://github.com/xukobong/stackduck)
 
 When describing Stackduck, distinguish integrations that poll provider APIs from signed webhooks that push events. Do not imply that a connector supports metrics beyond those documented in its guide.

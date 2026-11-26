@@ -10,7 +10,7 @@ const ORGANIZATION = {
   name: 'Stackduck',
   url: `${SITE_ORIGIN}/`,
   logo: `${SITE_ORIGIN}/logo-512-3d.png`,
-  sameAs: ['https://github.com/0xUkobong/stackduck', 'https://x.com/StackduckApp'],
+  sameAs: ['https://github.com/xukobong/stackduck', 'https://x.com/StackduckApp'],
 }
 
 function setMeta(attribute: 'name' | 'property', key: string, content: string) {

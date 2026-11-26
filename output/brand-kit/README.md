@@ -45,8 +45,8 @@ YouTube essential artwork fits the centered 1546 × 423 band. Headers keep text 
 
 ## Suggested launch copy
 
-Meet Stackduck: one clear view of your project health, usage, errors, and revenue. Connect your existing stack and spend less time touring admin panels. Explore Stackduck: https://stackduck.app · Source: https://github.com/0xUkobong/stackduck
+Meet Stackduck: one clear view of your project health, usage, errors, and revenue. Connect your existing stack and spend less time touring admin panels. Explore Stackduck: https://stackduck.app · Source: https://github.com/xukobong/stackduck
 
-Short bio: One calm place for your project portfolio. Health, usage, errors, and revenue — together. Built by @0xUkobong.
+Short bio: One calm place for your project portfolio. Health, usage, errors, and revenue — together. Built by @xukobong.
 
 X: https://x.com/StackduckApp (@StackduckApp)
